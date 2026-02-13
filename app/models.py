@@ -32,5 +32,6 @@ class Enrollment(Base):
     created_at = Column(DateTime, server_default=func.now())
 
     __table_args__ = (
+        # no duplicate enrollments for same student and course
         UniqueConstraint("student_id", "course_id", name="uq_student_course"),
     )
